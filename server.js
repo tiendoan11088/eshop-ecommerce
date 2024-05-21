@@ -1,9 +1,13 @@
 import express from "express";
 const express = require("express");
 
-require('dotenv').config();
-const cors = require("cors");
-const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+import dotenv from 'dotenv';
+import cors from 'cors';
+import stripeModule from 'stripe';
+
+dotenv.config();
+
+const stripe = stripeModule(process.env.STRIPE_PRIVATE_KEY);
 
 const app = express();
 app.use(cors());
