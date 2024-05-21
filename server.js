@@ -1,15 +1,15 @@
-import express from "express";
-const express = require("express");
-
 import dotenv from 'dotenv';
+import express from "express";
 import cors from 'cors';
+
 import stripeModule from 'stripe';
 
 dotenv.config();
+const app = express();
 
+const PORT = process.env.PORT || 4242;
 const stripe = stripeModule(process.env.STRIPE_PRIVATE_KEY);
 
-const app = express();
 app.use(cors());
 app.use(express.json());
 
@@ -62,5 +62,7 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 4242;
+
+
+
 app.listen(PORT, () => console.log(`Node server listening on port ${PORT}`));
